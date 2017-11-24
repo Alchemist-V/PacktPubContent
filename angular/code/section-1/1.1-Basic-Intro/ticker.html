@@ -4,39 +4,40 @@
             my first app!
         </title>
         <script>
-            function fwd() {
+            function forward() {
                 var boxHandle = document.getElementById('box');
                 var boxVal = parseInt(boxHandle.value);
                 boxHandle.value = boxVal + 1;
             }
-            function back() {
+            function backward() {
                 var boxHandle = document.getElementById('box');
                 var boxVal = parseInt(boxHandle.value);
                 boxHandle.value = boxVal - 1;
             }
-            function reset() {
-                alert('Oh no!! You have reset you ticker count.');
+            function reseter() {
+                alert ('You have reset your progress :(');
                 var boxHandle = document.getElementById('box');
+                var boxVal = parseInt(boxHandle.value);
                 boxHandle.value = 1;
             }
         </script>
     </head>
     <body>
-        <h2> Ahhoy! this is my first ticker app!</h2>
+        <h2>Ahhoy! This is my first ticker app.</h2>
         <br>
+
         Click me to tick fwd:
-        <button id='x' onclick="fwd()"> + </button>
+        <button id='fwd' onclick='forward()'>+</button>
 
         <br>
         Click me to tick back:
-        <button id='y' onclick="back()"> - </button>
+        <button id='back' onclick='backward()'>-</button>
 
         <br>
-        Click me to reset:
-        <button id='r' onclick="reset()"> r </button>
+        Click me to reset tick count:
+        <button id='reset' onclick='reseter()'>r</button>
 
         <br>
-        <input type='text' value='1' id='box' />
-
+        <input type='text' id='box' value='1'/>
     </body>
 </html>
