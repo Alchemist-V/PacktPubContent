@@ -4,17 +4,23 @@
             my first app!
         </title>
         <script>
-            function fwd() {
+        	// function assigned to a variable.
+            var x = function fwd() {
                 var boxHandle = document.getElementById('box');
                 var boxVal = parseInt(boxHandle.value);
                 boxHandle.value = boxVal + 1;
-                registerToTicks(boxVal + 1);
+                // self invoking function
+                (function (){
+					var boxVal = 4;
+					console.log(boxVal);
+                })();
+                console.log(boxVal);
             }
             function back() {
                 var boxHandle = document.getElementById('box');
                 var boxVal = parseInt(boxHandle.value);
                 boxHandle.value = boxVal - 1;
-                registerToTicks(boxVal - 1);
+                this.multiply(2,3);
             }
             function reset() {
                 alert('Oh no!! You have reset you ticker count.');
@@ -30,6 +36,12 @@
                 } else {
                     boxLabelHandle.innerText = "count not reached!";
                 }
+            }
+            // illistrates JS functions are objects.
+            function multiply(a,b) {
+	            console.log('arg length in mulitply is :' + arguments.length);
+                console.log(this.multiply.toString());
+            	return a*b;
             }
             function evaluate() {
                 var boxHandle = document.getElementById('box');
@@ -54,40 +66,17 @@
 
                 }
             }
-            
-	        function registerToTicks(count) {
-            	var countValHandle = document.getElementById('countVal');
-				var signHandle = document.getElementById('sign');
-                countValHandle.innerText = count;
-                console.log(count);
-                if (parseInt(count) == 0) {
-                	signHandle.innerText = "nuetral in nature";
-                    return;
-                }
-                
-                if (parseInt(count) > 0) {
-                	signHandle.innerText = "positive (+) in nature";
-                }
-                else {
-	                signHandle.innerText = "negative (-) in nature";
-                }
-            }
         </script>
     </head>
     <body>
         <h2> Ahhoy! this is my first ticker app!</h2>
         <br>
         Click me to tick fwd:
-        <button id='x' onclick="fwd()"> + </button>
+        <button id='x' onclick="x()"> + </button>
 
         <br>
         Click me to tick back:
         <button id='y' onclick="back()"> - </button>
-        
-        <br>
-        Current count:&nbsp;
-        <label id='countVal'>0</label> &nbsp; is <label id='sign'> nuetral in nature </label>
-		        
 
         <br>
         Click me to reset:
